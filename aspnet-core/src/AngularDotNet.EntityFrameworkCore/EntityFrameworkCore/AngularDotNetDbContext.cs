@@ -87,6 +87,16 @@ public class AngularDotNetDbContext :
         //    b.ConfigureByConvention(); //auto configure for the base class props
         //    //...
         //});
+        builder.Entity<Book>(b =>
+        {
+            b.ToTable(AngularDotNetConsts.DbTablePrefix + "Books", AngularDotNetConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+            b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+
+            // ADD THE MAPPING FOR THE RELATION
+            b.HasOne<Author>().WithMany().HasForeignKey(x => x.AuthorId).IsRequired();
+        });
+
 
         builder.Entity<Author>(b =>
         {
