@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
 
-namespace Acme.BookStore.Authors;
+namespace AngularDotNet.Authors {
 
 public interface IAuthorRepository : IRepository<Author, Guid>
 {
@@ -15,4 +15,5 @@ public interface IAuthorRepository : IRepository<Author, Guid>
         string sorting,
         string filter = null
     );
+}
 }
